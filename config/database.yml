@@ -10,17 +10,12 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 default: &default
-  database: d8boupg4bhifh
-  user: gummpcdbhypxgc
-  password: 9a1ec9552b0cc2f3bf397cf3729bcdafac1d6ef1c95671e9cf03a7b06e284736
-  host: ec2-23-22-156-110.compute-1.amazonaws.com
-  port: 5432  
-#adapter: mysql2
- #encoding: utf8mb4
-  #pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  #username: root
-  #password: root1234
-  #socket: /var/run/mysqld/mysqld.sock
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: root1234
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    respond_to :json
+  respond_to :json
 
     def create 
       user_password = params[:session][:password]

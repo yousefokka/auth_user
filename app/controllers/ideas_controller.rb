@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+  before_action :authenticate_with_token!, only: [:create, :update, :destroy]
   before_action :set_idea, only: [:show, :update, :destroy]
 
   # GET /ideas

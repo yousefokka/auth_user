@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
     before_action :authenticate_with_token!, only: [:update, :destroy]
     respond_to :json
   
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   
     def create
       @user = User.new(user_params) 
-      if @user.save
+      if user.save
         render json: @user, status: 201
       else
         render json: { errors: @user.errors }, status: 422

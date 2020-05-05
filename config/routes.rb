@@ -1,6 +1,6 @@
 #require 'api_constraints.rb'
 Rails.application.routes.draw do
-  devise_for :users
+  #devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  # resources :users, :only => [:show, :create, :update, :destroy]
   #resources :sessions, :only => [:create, :destroy]
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       # We are going to list our resources here
       resources :users, :only => [:show, :create, :update, :destroy] 
       resources :ideas
-     resources :jobs
+      resources :jobs
       #end
       resources :sessions, :only => [:create, :destroy]
    # end

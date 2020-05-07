@@ -15,8 +15,8 @@ Rails.application.routes.draw do
          resources :ideas
          resources :jobs
       
-        end
       end
+    end
       resources :sessions, :only => [:create, :destroy]
    # end
   #end

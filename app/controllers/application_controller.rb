@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
 
      def current_user
-        current_user ||= User.find_by(auth_token: request.headers['Authorization']) 
+        @current_user ||= User.find_by(auth_token: request.headers['Authorization']) 
       end
     
       def authenticate_with_token!
@@ -10,6 +10,10 @@ class ApplicationController < ActionController::API
     
       def user_signed_in?
         current_user.present? 
+      end
+
+      def auth_token
+         params[:auth_token]
       end
 
    

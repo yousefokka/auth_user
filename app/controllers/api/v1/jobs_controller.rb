@@ -1,5 +1,5 @@
-class JobsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
+class Api::V1::JobsController < ApplicationController
+  before_action :authenticate_with_token!, only: [:create, :update, :destroy]
   before_action :set_job, only: [:show, :update, :destroy]
 
   # GET /jobs

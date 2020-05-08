@@ -19,7 +19,7 @@ class Api::V1::JobsController < ApplicationController
     @job = Job.new(job_params)
 
     if @job.save
-      render json: @job, status: :created, location: @job
+      render json: @job, status: :created
     else
       render json: @job.errors, status: :unprocessable_entity
     end

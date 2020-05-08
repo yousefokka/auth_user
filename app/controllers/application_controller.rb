@@ -12,9 +12,7 @@ class ApplicationController < ActionController::API
         current_user.present? 
       end
 
-      def auth_token
-         params[:auth_token]
-      end
+
 
    
 end

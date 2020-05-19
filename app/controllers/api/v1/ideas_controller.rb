@@ -4,7 +4,7 @@ class Api::V1::IdeasController < ApplicationController
 
   # GET /ideas
   def index
-    @ideas = Idea.all
+    @ideas = current_user.ideas.all
 
     render json: @ideas
   end
@@ -16,7 +16,7 @@ class Api::V1::IdeasController < ApplicationController
 
   # POST /ideas
   def create
-    @idea = Idea.new(idea_params)
+    @idea = current_user.ideas.build(idea_params)
 
     if @idea.save
       render json: @idea, status: :created, location: @idea
@@ -42,7 +42,7 @@ class Api::V1::IdeasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
-      @idea = Idea.find(params[:id])
+      @idea = current_user.ideas.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

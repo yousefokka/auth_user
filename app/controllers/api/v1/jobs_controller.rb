@@ -4,7 +4,7 @@ class Api::V1::JobsController < ApplicationController
 
   # GET /jobs
   def index
-    @jobs = Job.all
+    @jobs = current_user.jobs.all
 
     render json: @jobs
   end
@@ -16,7 +16,7 @@ class Api::V1::JobsController < ApplicationController
 
   # POST /jobs
   def create
-    @job = Job.new(job_params)
+    @job = current_user.jobs.build(job_params)
 
     if @job.save
       render json: @job, status: :created
@@ -42,7 +42,7 @@ class Api::V1::JobsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job
-      @job = Job.find(params[:id])
+      @job = current_user.jobs.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

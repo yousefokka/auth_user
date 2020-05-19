@@ -1,5 +1,7 @@
 require 'api_constraints.rb'
 Rails.application.routes.draw do
+  get 'ideahome/index'
+  get 'jobhome/index'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  # resources :users, :only => [:show, :create, :update, :destroy]
@@ -15,6 +17,11 @@ Rails.application.routes.draw do
       resources :sessions, :only => [:create, :destroy]
          resources :ideas
          resources :jobs
+
+         get "Jobhome" => "jobhome#index" 
+         get "Ideahome" => "ideahome#index" 
+
+
       
       end
     end

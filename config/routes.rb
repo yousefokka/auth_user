@@ -1,5 +1,7 @@
 require 'api_constraints.rb'
 Rails.application.routes.draw do
+  resources :employees
+  resources :sponsers
   get 'ideahome/index'
   get 'jobhome/index'
   devise_for :users

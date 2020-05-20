@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_194737) do
+ActiveRecord::Schema.define(version: 2020_05_19_204310) do
+
+  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "jobtybe"
+    t.string "jobcategory"
+    t.string "address"
+    t.string "salary"
+    t.string "Gander"
+    t.string "Qualifcation"
+    t.string "mobile"
+    t.string "Degree"
+    t.string "Indestry"
+    t.integer "Exprense"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "ideas", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "title"
@@ -41,6 +57,18 @@ ActiveRecord::Schema.define(version: 2020_05_19_194737) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "sponsers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "Address"
+    t.string "Catagory"
+    t.string "Gander"
+    t.string "Funding"
+    t.string "Typemanagment"
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

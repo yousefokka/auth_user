@@ -1,6 +1,6 @@
 class Api::V1::IdeasController < ApplicationController
   before_action :authenticate_with_token!, only: [:create, :update, :destroy]
-  before_action :set_idea, only: [:show, :update, :destroy]
+  before_action :set_job, only: [:show, :update, :destroy]
 
   # GET /ideas
   def index
@@ -14,12 +14,12 @@ class Api::V1::IdeasController < ApplicationController
     render json: @idea
   end
 
-  # POST /ideas
+  # POST /jobs
   def create
     @idea = current_user.ideas.build(idea_params)
 
     if @idea.save
-      render json: @idea, status: :created, location: @idea
+      render json: @idea, status: :created
     else
       render json: @idea.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class Api::V1::IdeasController < ApplicationController
 
   # PATCH/PUT /ideas/1
   def update
-    if @idea.update(idea_params)
+    if @idea.update(job_params)
       render json: @idea
     else
       render json: @idea.errors, status: :unprocessable_entity
@@ -42,9 +42,8 @@ class Api::V1::IdeasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
-      @idea = current_user.ideas.find(params[:id])
+      @idea = current_user.jobs.find(params[:id])
     end
-
     # Only allow a trusted parameter "white list" through.
     def idea_params
       params.require(:idea).permit(:title, :Management, :ideacatagory, :address, :funding, :ideaDescription)

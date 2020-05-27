@@ -4,7 +4,7 @@ class Api::V1::SponsersController < ApplicationController
 
   # GET /sponsers
   def index
-    @sponsers = Sponser.all
+    @sponsers = current_user.sponsers.all
 
     render json: @sponsers
   end
@@ -16,7 +16,7 @@ class Api::V1::SponsersController < ApplicationController
 
   # POST /sponsers
   def create
-    @sponser = Sponser.new(sponser_params)
+    @sponser = current_user.sponsers.build(sponser_params)
 
     if @sponser.save
       render json: @sponser, status: :created, location: @sponser
@@ -42,7 +42,7 @@ class Api::V1::SponsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sponser
-      @sponser = Sponser.find(params[:id])
+      @sponser = current_user.sponsers.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

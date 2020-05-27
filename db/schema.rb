@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_19_204310) do
+ActiveRecord::Schema.define(version: 2020_05_26_211859) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(version: 2020_05_19_204310) do
     t.integer "Exprense"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_employees_on_user_id"
+  end
+
+  create_table "ideamakers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "jobtitle"
+    t.string "addree"
+    t.string "location"
+    t.string "Gander"
+    t.string "qualifiction"
+    t.string "mobile"
+    t.string "interstingfield"
+    t.string "indestry"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_ideamakers_on_user_id"
   end
 
   create_table "ideas", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -69,6 +87,8 @@ ActiveRecord::Schema.define(version: 2020_05_19_204310) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_sponsers_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

@@ -1,4 +1,4 @@
-class Employee < ApplicationRecord
+class Ideamaker < ApplicationRecord
     belongs_to :user, optional: true
 
 end

@@ -6,16 +6,11 @@ class User < ApplicationRecord
   has_one :sponser
   has_one :employee
   has_one :ideamaker
-
-
-  
   validates :auth_token, uniqueness: true
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  before_create :generate_authentication_token!   
 
-  before_create :generate_authentication_token!
-       
   def generate_authentication_token!
     begin
       self.auth_token = Devise.friendly_token
@@ -25,8 +20,6 @@ class User < ApplicationRecord
   def profile?
     sponser.present? || employee.present? || ideamaker.present?
   end 
-
-
   def profile
     sponser || employee || ideamaker
   end 
@@ -37,4 +30,5 @@ class User < ApplicationRecord
     return "ideamaker" if ideamaker
     return "not_found"   
   end
+  
 end

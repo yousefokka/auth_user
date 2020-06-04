@@ -1,6 +1,6 @@
 class Api::V1::IdeasController < ApplicationController
   before_action :authenticate_with_token!, only: [:create, :update, :destroy]
-  before_action :set_job, only: [:show, :update, :destroy]
+  before_action :set_idea, only: [:show, :update, :destroy]
 
   # GET /ideas
   def index

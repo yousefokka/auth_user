@@ -27,7 +27,7 @@ class Api::V1::IdeasController < ApplicationController
 
   # PATCH/PUT /ideas/1
   def update
-    if @idea.update(job_params)
+    if @idea.update(idea_params)
       render json: @idea
     else
       render json: @idea.errors, status: :unprocessable_entity
@@ -42,7 +42,7 @@ class Api::V1::IdeasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
-      @idea = current_user.jobs.find(params[:id])
+      @idea = current_user.idea.find(params[:id])
     end
     # Only allow a trusted parameter "white list" through.
     def idea_params

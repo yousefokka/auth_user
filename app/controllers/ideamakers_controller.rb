@@ -1,6 +1,6 @@
 class IdeamakersController < ApplicationController
   before_action :set_ideamaker, only: [:show, :update, :destroy]
-  basdaa
+
   # GET /ideamakers
   def index
     @ideamakers = Ideamaker.all

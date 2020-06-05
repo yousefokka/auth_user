@@ -4,7 +4,7 @@ class Api::V1::EmployeesController < ApplicationController
   before_action :validate_user 
   before_action :profile_exits, only: [:create]
  
-
+  
   # GET /employee
   def show 
     profile = @user.profile

@@ -1,4 +1,4 @@
-class Api::V1::EmployeesController < ApplicationController
+class Api::V1::ProfilesController < ApplicationController
   before_action :authenticate_with_token!, only: [:create, :update, :destroy]
   before_action :prepare_user, only: [:create,:show, :update, :destroy] 
   before_action :validate_user 

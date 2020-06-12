@@ -14,4 +14,11 @@ class ApplicationController < ActionController::API
   def prepare_user
     @user = User.find(params[:id])
   end
+
+  def current_job
+    @current_job ||= Job.find(params[:id])
+  end
+
+
+ 
 end

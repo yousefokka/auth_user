@@ -1,24 +1,42 @@
 require 'api_constraints.rb'
   Rails.application.routes.draw do
-    resources :ideamakers
-    get 'ideahome/index'
-    get 'jobhome/index'
+
     devise_for :users
       namespace :api do
         namespace :v1 do
-          resources :sessions, :only => [:create, :destroy]
-          resources :jobs
+          resources :sessions, :only => [:create, :destroy] 
+          resources :jobs 
           resources :ideas 
-          get "Jobhome" => "jobhome#index" 
-          get "Ideahome" => "ideahome#index"
+
           resources :users, :only => [:show, :create, :update, :destroy]  do 
            member do   
-             get "profile" => 'employees#show'
-             post "profile" => 'employees#create'
-             put "profile" => 'employees#update'
-             delete "profile" => 'employees#destroy'
+             get "profile" => 'profiles#show'
+             post "profile" => 'profiles#create'
+             put "profile" => 'profiles#update'
+             delete "profile" => 'profiles#destroy'
           end 
+        end
+
+          post "submittings" => 'submittings#create'
+          get "submittings" => 'submittings#userapplication'
+          get "submittings/:id" => 'submittings#show'
+          get "submittingsa" => 'submittings#Jobapplication'
+          #get "submittingsall" => 'submittings#all'
+
+
+  
+
+          
+        
+          get "Jobhome" => "jobhome#index" 
+          get "Jobhome/:id" => "jobhome#show" 
+          get "Ideahome" => "ideahome#index"
+          get "Ideahome/:id" => "ideahome#show" 
+          
+
+       
+
        end 
       end
     end
-end
+  

@@ -1,11 +1,10 @@
 class Api::V1::JobsController < ApplicationController
   before_action :authenticate_with_token!, only: [:create, :update, :destroy]
   before_action :set_job, only: [:show, :update, :destroy]
-
+  before_action :check_requst, only: [:create]
   # GET /jobs
   def index
     @jobs = current_user.jobs.all
-
     render json: @jobs
   end
 
@@ -48,5 +47,10 @@ class Api::V1::JobsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def job_params
       params.require(:job).permit(:title, :jtype, :catagory, :address, :salary, :gander, :country, :city, :qualification, :experience, :description)
+    end
+
+    def check_requst
+      @user = current_user
+      render json: {massage: "not authorize user"}, status: 401 if @user.user_type != "ideamaker"
     end
 end

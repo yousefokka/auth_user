@@ -61,7 +61,6 @@ class Api::V1::SubmittingsController < ApplicationController
 
   def request_agin 
     render json: {massage: "you cant do it again"}, status: 400 if User.ids != @submitting.user_id
-
   end
     
 

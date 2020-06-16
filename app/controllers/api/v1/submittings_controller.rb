@@ -5,14 +5,16 @@ class Api::V1::SubmittingsController < ApplicationController
   before_action :check_company, only: [:Jobapplication]
   #before_action :request_agin, only: [:create]  
 
+
   / def all
     @submittings = Submitting.all
     render json: @submittings
   end
  /
-  def userapplication
+  def userapplication   
+    @jobs = Job.all 
     @submittings = current_user.submittings.all
-    render json: @submittings
+    render json: @submittings.as_json(include: :job)
   end
 
 

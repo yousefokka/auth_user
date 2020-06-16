@@ -23,7 +23,10 @@ require 'api_constraints.rb'
           get "submittingsa" => 'submittings#Jobapplication'
           #get "submittingsall" => 'submittings#all'
 
-
+          post "funds" => 'funds#create'
+          get "funds" => 'funds#sponserapplication'
+          get "funds/:id" => 'funds#show'
+          get "ideafund" => 'funds#Ideaapplication'
   
 
           

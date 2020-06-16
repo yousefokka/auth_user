@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :employee
   has_one :ideamaker
   has_many :submittings
+  has_many :funds
   #has_many :jobs, through: :submittings
   validates :auth_token, uniqueness: true
   devise :database_authenticatable, :registerable,

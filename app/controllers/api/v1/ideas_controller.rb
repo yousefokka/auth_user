@@ -1,6 +1,7 @@
 class Api::V1::IdeasController < ApplicationController
   before_action :authenticate_with_token!, only: [:create, :update, :destroy]
   before_action :set_idea, only: [:show, :update, :destroy]
+  before_action :check_requst, only: [:create]
 
   # GET /ideas
   def index
@@ -48,4 +49,10 @@ class Api::V1::IdeasController < ApplicationController
     def idea_params
       params.require(:idea).permit(:title, :Management, :ideacatagory, :address, :funding, :ideaDescription)
     end
+
+    def check_requst
+      @user = current_user
+      render json: {massage: "not authorize user"}, status: 401 if @user.user_type != "ideamaker"
+    end
+
 end

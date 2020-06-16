@@ -3,7 +3,7 @@ class Api::V1::FundsController < ApplicationController
     before_action :set_job, only: [:show ,:destroy]
     before_action :check_requst, only: [:create ,:destroy]
     before_action :check_company, only: [:Jobapplication]
-    #before_action :request_agin, only: [:create]  
+    before_action :request_agin, only: [:create]  
   
     / def all
       @funds = fund.all
@@ -11,15 +11,16 @@ class Api::V1::FundsController < ApplicationController
     end
    /
     def sponserapplication
+      @ideas = Idea.all 
       @funds = current_user.funds.all
-      render json: @funds
+      render json: @funds..as_json(include: :idea)
     end
   
   
-    def show
+    def sho
       render json: @fund
     end
-  
+
   
     def Ideaapplication 
     # @funds= fund.joins(job: :users).where(jobs:{job_id: id})
@@ -45,12 +46,12 @@ class Api::V1::FundsController < ApplicationController
     private
     
       def fund_params
-        params.require(:fund).permit(:user_id, :job_id)
+        params.require(:fund).permit(:user_id, :idea_id)
       end
   
       def check_requst
         @user = current_user
-        render json: {massage: "not authorize user you are not employee"}, status: 401 if @user.user_type != "sponser"
+        render json: {massage: "not authorize user you are not Sponcer"}, status: 401 if @user.user_type != "sponser"
       end
   
   
@@ -61,6 +62,11 @@ class Api::V1::FundsController < ApplicationController
   
     def request_agin 
       render json: {massage: "you cant do it again"}, status: 400 if User.ids != @fund.user_id
+    end
+
+    def request_agin 
+      @fund =fund.find_by("user_id = ? and idea_id = ?", params[:user_id], params[:idea_id])
+      render json: {massage: "you cant do it again"}, status: 400 if @fund
     end
       
 end

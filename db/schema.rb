@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 2020_06_16_004322) do
   end
 
   create_table "funds", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.bigint "job_id"
+    t.bigint "idea_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["job_id"], name: "index_funds_on_job_id"
+    t.index ["idea_id"], name: "index_funds_on_idea_id"
     t.index ["user_id"], name: "index_funds_on_user_id"
   end
 

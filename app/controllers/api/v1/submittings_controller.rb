@@ -3,7 +3,7 @@ class Api::V1::SubmittingsController < ApplicationController
   before_action :set_job, only: [:show ,:destroy]
   before_action :check_requst, only: [:create ,:destroy]
   before_action :check_company, only: [:Jobapplication]
-  #before_action :request_agin, only: [:create]  
+  before_action :request_agin, only: [:create]  
 
 
   / def all
@@ -62,10 +62,9 @@ class Api::V1::SubmittingsController < ApplicationController
   end
 
   def request_agin 
-    render json: {massage: "you cant do it again"}, status: 400 if User.ids != @submitting.user_id
+    @submitting =Submitting.find_by("user_id = ? and job_id = ?", params[:user_id], params[:job_id])
+    render json: {massage: "you cant do it again"}, status: 400 if @submitting
   end
     
-
-
 
 end

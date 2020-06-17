@@ -13,7 +13,7 @@ class Api::V1::FundsController < ApplicationController
     def sponserapplication
       @ideas = Idea.all 
       @funds = current_user.funds.all
-      render json: @funds..as_json(include: :idea)
+      render json: @funds.as_json(include: :idea)
     end
   
   

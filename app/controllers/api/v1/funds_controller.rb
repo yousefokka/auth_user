@@ -17,7 +17,7 @@ class Api::V1::FundsController < ApplicationController
     end
   
   
-    def sho
+    def show
       render json: @fund
     end
 
@@ -65,7 +65,7 @@ class Api::V1::FundsController < ApplicationController
     end
 
     def request_agin 
-      @fund =fund.find_by("user_id = ? and idea_id = ?", params[:user_id], params[:idea_id])
+      @fund =Fund.find_by("user_id = ? and idea_id = ?", params[:user_id], params[:idea_id])
       render json: {massage: "you cant do it again"}, status: 400 if @fund
     end
       

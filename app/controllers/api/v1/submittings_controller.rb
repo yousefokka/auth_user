@@ -24,9 +24,11 @@ class Api::V1::SubmittingsController < ApplicationController
 
 
   def Jobapplication 
+    profile = 
+    profile = @user.profile
   # @submittings= Submitting.joins(job: :users).where(jobs:{job_id: id})
     @submittings = current_job.submittings.all
-    render json: @submittings
+    render json: @submittings.as_json(include: :profile)
   end
 
   def create

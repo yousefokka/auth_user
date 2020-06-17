@@ -17,7 +17,7 @@ require 'api_constraints.rb'
           end 
         end
 
-          post "submittings" => 'submittings#create'
+          post "submittings" => 'submittings#create' 
           get "submittings" => 'submittings#userapplication'
           get "submittings/:id" => 'submittings#show'
           get "submittingsa" => 'submittings#Jobapplication'
@@ -36,6 +36,7 @@ require 'api_constraints.rb'
           get "Ideahome" => "ideahome#index"
           get "Ideahome/:id" => "ideahome#show" 
           
+          post "Response"=> 'jobresponses#create'
 
        
 

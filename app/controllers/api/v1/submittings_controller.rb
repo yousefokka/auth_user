@@ -10,26 +10,21 @@ class Api::V1::SubmittingsController < ApplicationController
     @submittings = Submitting.all
     render json: @submittings
   end
- /
+  /
   def userapplication   
     @jobs = Job.all 
     @submittings = current_user.submittings.all
     render json: @submittings.as_json(include: :job)
   end
 
-
   def show
     render json: @submitting
   end
 
-
   def Jobapplication 
-    profile = 
-    profile = @user.profile
-  # @submittings= Submitting.joins(job: :users).where(jobs:{job_id: id})
     @submittings = current_job.submittings.all
-    render json: @submittings.as_json(include: :profile)
-  end
+    render json: @submittings.as_json(include: {user:  {include: :employee}})
+    end
 
   def create
     @submitting = current_user.submittings.build(submitting_params)
@@ -42,9 +37,8 @@ class Api::V1::SubmittingsController < ApplicationController
   end
 
   def destroy
-     @Submitting.destroy
-   end
-  
+    @Submitting.destroy
+  end
   
   private
   
@@ -58,15 +52,14 @@ class Api::V1::SubmittingsController < ApplicationController
     end
 
 
-  def check_company
-    @job = current_job
-    render json: {massage: "not authorize company dont allow"}, status: 401 if User.ids == @job.user_id
-  end
+    def check_company
+      @job = current_job
+      render json: {massage: "not authorize company dont allow"}, status: 401 if User.ids == @job.user_id
+    end
 
-  def request_agin 
-    @submitting =Submitting.find_by("user_id = ? and job_id = ?", params[:user_id], params[:job_id])
-    render json: {massage: "you cant do it again"}, status: 400 if @submitting
-  end
+    def request_agin 
+      @submitting =Submitting.find_by("user_id = ? and job_id = ?", params[:user_id], params[:job_id])
+      render json: {massage: "you cant do it again"}, status: 400 if @submitting
+    end
     
-
 end

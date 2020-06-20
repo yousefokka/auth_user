@@ -55,9 +55,6 @@ class Api::V1::ProfilesController < ApplicationController
     else
       return render json: {massage: "unknown type"}, status: 404
     end 
-
-
-    
   end
 
   # DELETE /employees/1

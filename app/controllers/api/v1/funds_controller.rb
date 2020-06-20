@@ -23,9 +23,8 @@ class Api::V1::FundsController < ApplicationController
 
   
     def Ideaapplication 
-    # @funds= fund.joins(job: :users).where(jobs:{job_id: id})
       @funds = current_job.funds.all
-      render json: @funds
+      render json: @funds.as_json(include: {user:  {only: :email,include: :sponser}})
     end
   
     def create

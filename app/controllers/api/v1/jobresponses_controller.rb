@@ -2,7 +2,7 @@ class Api::V1::JobresponsesController < ApplicationController
   before_action :authenticate_with_token!
 
   def show 
-    jobresponse = @current_submition.jobresponse
+    jobresponse = current_submition.jobresponse
     return render json: {massage: "Response not found"}, status: 404 unless jobresponse
     render json: jobresponse
   end
@@ -23,6 +23,9 @@ class Api::V1::JobresponsesController < ApplicationController
     params.require(:jobresponse).permit(:submitting_id, :status)
   end
 
-
+  def check_requst
+    @user = current_user
+    render json: {massage: "not authorize user"}, status: 401 if @user.user_type != "ideamaker"
+  end
     
 end

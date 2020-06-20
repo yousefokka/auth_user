@@ -23,7 +23,7 @@ class Api::V1::SubmittingsController < ApplicationController
 
   def Jobapplication 
     @submittings = current_job.submittings.all
-    render json: @submittings.as_json(include: {user:  {include: :employee}})
+    render json: @submittings.as_json(include: { user: {only: :email,include: :employee} })
     end
 
   def create

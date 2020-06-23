@@ -19,6 +19,11 @@ class ApplicationController < ActionController::API
     @current_job ||= Job.find(params[:id])
   end
 
+  def current_idea
+    @current_idea ||= Idea.find(params[:id])
+  end
+
+
   def current_submition
     @current_submition ||= Submitting.find(params[:id])
   end

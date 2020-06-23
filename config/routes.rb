@@ -28,7 +28,7 @@ require 'api_constraints.rb'
           get "funds/:id" => 'funds#show'
           get "ideafund" => 'funds#Ideaapplication'
   
-
+          get "Jobsearch" => 'jobsearch#show'
           
         
           get "Jobhome" => "jobhome#index" 

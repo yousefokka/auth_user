@@ -23,7 +23,7 @@ class Api::V1::FundsController < ApplicationController
 
   
     def Ideaapplication 
-      @funds = current_job.funds.all
+      @funds = current_idea.funds.all
       render json: @funds.as_json(include: {user:  {only: :email,include: :sponser}})
     end
   

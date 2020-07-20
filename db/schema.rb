@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_062239) do
+ActiveRecord::Schema.define(version: 2020_07_20_145638) do
 
-  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "jobtybe"
     t.string "jobcategory"
@@ -27,10 +27,13 @@ ActiveRecord::Schema.define(version: 2020_06_16_062239) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.text "employeeBio"
+    t.string "Datafrom"
+    t.string "Datato"
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
-  create_table "funds", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "funds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "idea_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -39,36 +42,41 @@ ActiveRecord::Schema.define(version: 2020_06_16_062239) do
     t.index ["user_id"], name: "index_funds_on_user_id"
   end
 
-  create_table "ideamakers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "ideamakers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.string "jobtitle"
     t.string "addree"
-    t.string "location"
     t.string "Gander"
     t.string "qualifiction"
     t.string "mobile"
     t.string "interstingfield"
-    t.string "indestry"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.text "ideamakerBio"
+    t.string "Website"
+    t.integer "size"
     t.index ["user_id"], name: "index_ideamakers_on_user_id"
   end
 
-  create_table "ideas", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "ideas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.string "Management"
     t.string "ideacatagory"
     t.string "address"
     t.string "funding"
-    t.string "ideaDescription"
+    t.text "ideaDescription"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_ideas_on_user_id"
   end
 
-  create_table "jobresponces", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "jobfavourits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "jobresponces", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "submitting_id"
     t.string "Status"
     t.datetime "created_at", precision: 6, null: false
@@ -76,7 +84,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_062239) do
     t.index ["submitting_id"], name: "index_jobresponces_on_submitting_id"
   end
 
-  create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.string "jtype"
     t.string "catagory"
@@ -84,17 +92,16 @@ ActiveRecord::Schema.define(version: 2020_06_16_062239) do
     t.string "salary"
     t.string "gander"
     t.string "country"
-    t.string "city"
     t.string "qualification"
     t.string "experience"
-    t.string "description"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
-  create_table "sponsers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "sponsers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "Address"
     t.string "Catagory"
@@ -105,10 +112,12 @@ ActiveRecord::Schema.define(version: 2020_06_16_062239) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.string "sexprience"
+    t.text "sponcerBio"
     t.index ["user_id"], name: "index_sponsers_on_user_id"
   end
 
-  create_table "submittings", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "submittings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "job_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -117,7 +126,7 @@ ActiveRecord::Schema.define(version: 2020_06_16_062239) do
     t.index ["user_id"], name: "index_submittings_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

@@ -15,6 +15,12 @@ require 'api_constraints.rb'
              put "profile" => 'profiles#update'
              delete "profile" => 'profiles#destroy'
           end 
+          member do
+            get "Jobfavoutit" => 'jobfavourit#show'
+            post "Jobfavoutit" => 'jobfavourit#create'
+            put "Jobfavoutit" => 'jobfavourit#update'
+            delete "Jobfavoutit" => 'jobfavourit#destroy'
+          end
         end
 
           post "submittings" => 'submittings#create' 
@@ -28,8 +34,9 @@ require 'api_constraints.rb'
           get "funds/:id" => 'funds#show'
           get "ideafund" => 'funds#Ideaapplication'
   
-          get "Jobsearch" => 'jobsearch#show'
-          
+          get "Jobsearch" => 'search#show'
+          get "Ideasearch" => 'search#show2'
+
         
           get "Jobhome" => "jobhome#index" 
           get "Jobhome/:id" => "jobhome#show" 

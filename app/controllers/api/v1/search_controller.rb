@@ -1,4 +1,4 @@
-class Api::V1::JobsearchController < ApplicationController
+class Api::V1::SearchController < ApplicationController
     before_action :authenticate_with_token!
 
 

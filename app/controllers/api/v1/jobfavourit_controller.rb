@@ -24,7 +24,7 @@ class Api::V1::JobfavouritController < ApplicationController
         else
           render json: { errors: @jobfavourits.errors }, status: 422
         end
-      end
+    end
 
       def destroy
         @Submitting.destroy

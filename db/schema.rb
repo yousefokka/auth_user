@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_20_145638) do
+ActiveRecord::Schema.define(version: 2020_07_22_123319) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_07_20_145638) do
     t.string "address"
     t.string "salary"
     t.string "gander"
-    t.string "country"
     t.string "qualification"
     t.string "experience"
     t.text "description"
@@ -112,7 +111,7 @@ ActiveRecord::Schema.define(version: 2020_07_20_145638) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.string "sexprience"
+    t.string "exprience"
     t.text "sponcerBio"
     t.index ["user_id"], name: "index_sponsers_on_user_id"
   end

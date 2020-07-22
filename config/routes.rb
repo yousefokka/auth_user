@@ -16,10 +16,11 @@ require 'api_constraints.rb'
              delete "profile" => 'profiles#destroy'
           end 
           member do
-            get "Jobfavoutit" => 'jobfavourit#show'
+            get "Jobfavoutit" => 'jobfavourit#index'
+            get "Jobfavoutit/:id" => 'jobfavourit#show'
             post "Jobfavoutit" => 'jobfavourit#create'
             put "Jobfavoutit" => 'jobfavourit#update'
-            delete "Jobfavoutit" => 'jobfavourit#destroy'
+            delete "Jobfavoutit/:id" => 'jobfavourit#destroy'
           end
         end
 

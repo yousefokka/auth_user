@@ -81,6 +81,6 @@ class Api::V1::ProfilesController < ApplicationController
   end
 
   def ideamaker_params
-    params.require(:ideamaker).permit(:name, :addree, :Gander, :qualifiction, :mobile, :interstingfield, :ideamakerBio, :Website, size)
+    params.require(:ideamaker).permit(:name, :addree, :Gander, :qualifiction, :mobile, :interstingfield, :ideamakerBio, :Website, :size)
   end
 end

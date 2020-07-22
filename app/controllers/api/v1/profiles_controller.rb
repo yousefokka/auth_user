@@ -73,7 +73,7 @@ class Api::V1::ProfilesController < ApplicationController
   end
     # Only allow a trusted parameter "white list" through.
   def sponser_params
-    params.require(:sponser).permit(:name, :Address, :Catagory, :Gander, :Funding, :Typemanagment, :phone, :sexprience, :sponserBio)
+    params.require(:sponser).permit(:name, :Address, :Catagory, :Gander, :Funding, :Typemanagment, :phone, :exprience, :sponserBio)
   end
 
   def employee_params

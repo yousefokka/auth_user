@@ -1,7 +1,7 @@
 class Api::V1::IdeafavouritController < ApplicationController
     before_action :authenticate_with_token!
     before_action :set_ideafavourit, only: [:show ,:destroy]
-    before_action :check_requst, only: ideareate ,:destroy]
+    before_action :check_requst, only: [:create ,:destroy]
     before_action :add_agin, only: [:create]  
 
     def index   

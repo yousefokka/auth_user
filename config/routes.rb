@@ -22,6 +22,13 @@ require 'api_constraints.rb'
             put "Jobfavoutit" => 'jobfavourit#update'
             delete "Jobfavoutit/:id" => 'jobfavourit#destroy'
           end
+          member do
+            get "Ideafavoutit" => 'ideafavourit#index'
+            get "Ideafavoutit/:id" => 'ideafavourit#show'
+            post "Ideafavoutit" => 'ideafavourit#create'
+            put "Ideafavoutit" => 'ideafavourit#update'
+            delete "Ideafavoutit/:id" => 'ideafavourit#destroy'
+          end
         end
 
           post "submittings" => 'submittings#create' 

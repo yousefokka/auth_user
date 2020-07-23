@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :submittings
   has_many :funds
   has_many :jobfavourit
+  has_many :ideafavourit
   #has_many :jobs, through: :submittings
   validates :auth_token, uniqueness: true
   devise :database_authenticatable, :registerable,

@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_115104) do
     t.string "interstingfield"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
+    t.bigint "user_idd"
     t.text "ideamakerBio"
     t.string "Website"
     t.integer "size"

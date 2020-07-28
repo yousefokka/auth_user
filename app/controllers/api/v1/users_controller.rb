@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
   respond_to :json
 
   def show
-    render  json: @user
+    render json: @user.as_json(only: [:email])
   end
   
   def create

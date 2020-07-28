@@ -1,8 +1,8 @@
 class Api::V1::SubmittingsController < ApplicationController
   before_action :authenticate_with_token!
-  before_action :set_job, only: [:show ,:destroy]
+  before_action :set_submitting, only: [:show ,:destroy ,:update]
   before_action :check_requst, only: [:create ,:destroy]
-  before_action :check_company, only: [:Jobapplication]
+  before_action :check_company, only: [:Jobapplication , :update]
   before_action :request_agin, only: [:create]  
 
 
@@ -36,12 +36,28 @@ class Api::V1::SubmittingsController < ApplicationController
     end
   end
 
+  def update
+    if @Submitting.update(responcpe_params)
+      render json: @Submitting
+    else
+      render json: @Submitting.errors, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @Submitting.destroy
   end
   
   private
+
+  def set_submitting
+    @Submitting = Submitting.find(params[:id])
+  end
   
+    def responcpe_params
+      params.require(:submitting).permit(:Responce)
+    end
+
     def submitting_params
       params.require(:submitting).permit(:user_id, :job_id)
     end

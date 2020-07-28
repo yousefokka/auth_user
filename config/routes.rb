@@ -35,6 +35,8 @@ require 'api_constraints.rb'
           get "submittings" => 'submittings#userapplication'
           get "submittings/:id" => 'submittings#show'
           get "submittingsa" => 'submittings#Jobapplication'
+          put "Responce/:id" => 'submittings#update' 
+
           #get "submittingsall" => 'submittings#all'
 
           post "funds" => 'funds#create'

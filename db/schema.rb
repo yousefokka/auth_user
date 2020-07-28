@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_172627) do
+ActiveRecord::Schema.define(version: 2020_07_28_185259) do
 
   create_table "employees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -64,6 +64,10 @@ ActiveRecord::Schema.define(version: 2020_07_28_172627) do
     t.text "ideamakerBio"
     t.string "Website"
     t.integer "size"
+    t.string "ownernaem"
+    t.string "ownerphono"
+    t.string "owneraddress"
+    t.string "companyemail"
     t.index ["user_id"], name: "index_ideamakers_on_user_id"
   end
 
